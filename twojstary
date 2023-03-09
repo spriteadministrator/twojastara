@@ -78,6 +78,9 @@ table.insert(welcomerlist, " ☂Velkommen til Kristiansand☂ ")
 local function welcomerfunc()
     if welcomertime >= 0 and welcomertime < 740 then
         welcomertime = welcomertime + 1
+    client.exec("clear")
+    print("Welcome Back")
+    print("Shoppy:")
     end
     if welcomertime == 10 then
         welcomer = true
