@@ -74,13 +74,10 @@ local welcomer = false
 local welcomervector = 0
 local welcomertime = 0
 local welcomerlist = {}
-table.insert(welcomerlist, " ☂Velkommen til Kristiansand☂ ")
+table.insert(welcomerlist, "☀ Welcome to Tønsberg.no ☀")
 local function welcomerfunc()
     if welcomertime >= 0 and welcomertime < 740 then
         welcomertime = welcomertime + 1
-    client.exec("clear")
-    print("Welcome Back")
-    print("Shoppy:")
     end
     if welcomertime == 10 then
         welcomer = true
@@ -130,17 +127,25 @@ local refs = {
 
 --# Menu
 
+    client.exec("clear")
+    print("☀ Welcome Back☀")
+    print("☁ Shoppy:☁ ")
+    print("☁ Support:☁ ")
+    print("☁ Config:☁ ") 
+    print("☁ Feedback:☁ ")
+    client.exec("play buttons/button1;")
+
 local menu = {
 
-    enable = ui.new_combobox("AA", "Anti-aimbot angles", "\a848484BB[\aAEB9E2FFKristiansand\a848484BB] \aFFFFFFBBSwitcher", "Disable", "Enable"),
+    enable = ui.new_combobox("AA", "Anti-aimbot angles", "\a848484BB[\aAEB9E2FFTønsberg\a848484BB] \aFFFFFFBBSwitcher", "Disable", "Enable"),
     label = ui.new_label("AA", "Anti-aimbot angles", " "),
-    tab = ui.new_combobox("AA", "Anti-aimbot angles", "\a848484BB[\aAEB9E2FFKristiansand\a848484BB] \aFFFFFFBBSelect category", "Information", "Anti-Aim", "Ragebot", "Visuals", "Misc"),
-    infolabel1 = ui.new_label("AA", "Anti-aimbot angles", "☂  Welcome to Kristiansand"),
-    infolabel2 = ui.new_label("AA", "Anti-aimbot angles", "☂  Build: Nightly 0.0.0"),
+    tab = ui.new_combobox("AA", "Anti-aimbot angles", "\a848484BB[\aAEB9E2FFTønsberg\a848484BB] \aFFFFFFBBSelect category", "Information", "Anti-Aim", "Ragebot", "Visuals", "Misc"),
+    infolabel1 = ui.new_label("AA", "Anti-aimbot angles", "☁ Welcome to Tønsberg.no☁"),
+    infolabel2 = ui.new_label("AA", "Anti-aimbot angles", "☁ Build: Nightly 0.0.0☁"),
     emptylabel1 = ui.new_label("AA", "Anti-aimbot angles", " "),
-    ragebot_label = ui.new_label("AA", "Anti-aimbot angles", "\aAEB9E2FF★★★{ \aFFFFFFBBRagebot\aAEB9E2FF }★★★"),
-    visuals_label = ui.new_label("AA", "Anti-aimbot angles", "\aAEB9E2FF★★★{ \aFFFFFFBBVisuals\aAEB9E2FF }★★★"),
-    misc_label = ui.new_label("AA", "Anti-aimbot angles", "\aAEB9E2FF★★★{ \aFFFFFFBBMisc\aAEB9E2FF }★★★"),
+    ragebot_label = ui.new_label("AA", "Anti-aimbot angles", "\aAEB9E2FF------------------{ \aFFFFFFBBRagebot\aAEB9E2FF }-----------------"),
+    visuals_label = ui.new_label("AA", "Anti-aimbot angles", "\aAEB9E2FF-------------------{ \aFFFFFFBBVisuals\aAEB9E2FF }------------------"),
+    misc_label = ui.new_label("AA", "Anti-aimbot angles", "\aAEB9E2FF--------------------{ \aFFFFFFBBMisc\aAEB9E2FF }--------------------"),
     b_prediction = ui.new_combobox("AA", "Anti-aimbot angles", "\a848484BB[\aAEB9E2FFRage\a848484BB] \aFFFFFFBBBetter prediction", "Off", "Instant"),
     f_baim = ui.new_multiselect("AA", "Anti-aimbot angles", "\a848484BB[\aAEB9E2FFRage\a848484BB] \aFFFFFFBBBody Prefers", "HP lower than X", "After X misses"),
     f_baimmis = ui.new_slider("AA", "Anti-aimbot angles", "\a848484BB[\aAEB9E2FFBody\a848484BB] \aFFFFFFBBAfter X misses", 1, 8, 2, true, "x"),
@@ -153,15 +158,15 @@ local menu = {
     Manualaa = ui.new_combobox("AA", "Anti-aimbot angles", "\a848484BB[\aAEB9E2FFAnti-Aim\a848484BB] \aFFFFFFBBManual anti-aim", "Off", "On"),
     AntiHit = ui.new_combobox("AA", "Anti-aimbot angles", "\a848484BB[\aAEB9E2FFAnti-Aim\a848484BB] \aFFFFFFBBAnti-Hit Exploit", "Off", "On"),
     killsay = ui.new_combobox("AA", "Anti-aimbot angles", "\a848484BB[\aAEB9E2FFChat\a848484BB] \aFFFFFFBBKillsay", "Off", "English", "Russian"),
-    binds_label = ui.new_label("AA", "Anti-aimbot angles", "\aAEB9E2FF★★★{ \aFFFFFFBBBinds\aAEB9E2FF }★★★"),
+    binds_label = ui.new_label("AA", "Anti-aimbot angles", "\aAEB9E2FF--------------------{ \aFFFFFFBBBinds\aAEB9E2FF }--------------------"),
     freestandinghotkey = ui.new_hotkey("AA", "Anti-aimbot angles", "\a848484BB[\aAEB9E2FFBind\a848484BB] \aFFFFFFBBFreestanding"),
     Manualaaleft = ui.new_hotkey("AA", "Anti-aimbot angles", "\a848484BB[\aAEB9E2FFBind\a848484BB] \aFFFFFFBBManual left"),
     Manualaaright = ui.new_hotkey("AA", "Anti-aimbot angles", "\a848484BB[\aAEB9E2FFBind\a848484BB] \aFFFFFFBBManual right"),
     dmgindicator = ui.new_combobox("AA", "Anti-aimbot angles", "\a848484BB[\aAEB9E2FFScreen\a848484BB] \aFFFFFFBBDamage indicator", "Off", "On"),
-    watermark = ui.new_combobox("AA", "Anti-aimbot angles", "\a848484BB[\aAEB9E2FFScreen\a848484BB] \aFFFFFFBBWatermark", "Off", "Down center", "Modern"),
-    indicators = ui.new_combobox("AA", "Anti-aimbot angles", "\a848484BB[\aAEB9E2FFScreen\a848484BB] \aFFFFFFBBIndicators", "Off", "Modern", "Acatel"),
+    watermark = ui.new_combobox("AA", "Anti-aimbot angles", "\a848484BB[\aAEB9E2FFScreen\a848484BB] \aFFFFFFBBWatermark", "Modern", "Down center"),
+    indicators = ui.new_combobox("AA", "Anti-aimbot angles", "\a848484BB[\aAEB9E2FFScreen\a848484BB] \aFFFFFFBBIndicators", "Off","Og"),
     aimbotlogs = ui.new_multiselect("AA", "Anti-aimbot angles", "\a848484BB[\aAEB9E2FFScreen\a848484BB] \aFFFFFFBBAimbot logs", "Console", "Under crosshair"),
-    color_label = ui.new_label("AA", "Anti-aimbot angles", "\aAEB9E2FF★★★{ \aFFFFFFBBColors\aAEB9E2FF }★★★"),
+    color_label = ui.new_label("AA", "Anti-aimbot angles", "\aAEB9E2FF--------------------{ \aFFFFFFBBColors\aAEB9E2FF }-----------------"),
     indicatorscolorlabel = ui.new_label("AA", "Anti-aimbot angles", "\a848484BB[\aAEB9E2FFColor\a848484BB] \aFFFFFFBBIndicators Color"),
     indicatorscolor = ui.new_color_picker("AA", "Anti-aimbot angles", "Ind", 255,255,255,255),
     watermarkcolorlabel = ui.new_label("AA", "Anti-aimbot angles", "\a848484BB[\aAEB9E2FFColor\a848484BB] \aFFFFFFBBWatermark color"),
@@ -368,7 +373,7 @@ local function export_config()
 		end
 	end
 	client.exec("play ui/beepclear;")
-    clipboard.set("Kristiansand_"..base64.encode(json.stringify(settings), 'base64'))
+    clipboard.set("Tønsberg_"..base64.encode(json.stringify(settings), 'base64'))
 end
 export_btn = ui.new_button("AA", "Anti-aimbot angles", "export settings", export_config)
 local function import_config()
@@ -389,7 +394,7 @@ import_btn = ui.new_button("AA", "Anti-aimbot angles", "import settings", import
 
 local function default_config()
 
-    defaultkfg = 'Kristiansand_eyJTdGFuZGluZyI6eyJmX3dheTQiOjAsImZfd2F5MSI6MCwiSml0dGVyT2Zmc2V0Ijo1NCwiSml0dGVyIjoiQ2VudGVyIiwiZl93YXk1IjowLCJZYXdMZWZ0IjotMTAsImZfd2F5MiI6MCwiRmFrZWxpbWl0bCI6NjAsImZfd2F5MyI6MCwiQm9keVlhd1ZhbHVlIjotMzksIllhd0Jhc2UiOiJBdCB0YXJnZXRzIiwiWWF3IjoiMTgwIiwiQm9keVlhdyI6IkppdHRlciIsIlBpdGNoIjoiRGVmYXVsdCIsImVtcHR5bGFiZWwzIjoiICIsIkZha2VsaW1pdHIiOjYwLCJZYXdSaWdodCI6MTB9LCJDcm91Y2hpbmciOnsiZl93YXk0IjowLCJmX3dheTEiOjAsIkppdHRlck9mZnNldCI6NTQsIkppdHRlciI6IkNlbnRlciIsImZfd2F5NSI6MCwiWWF3TGVmdCI6LTEyLCJmX3dheTIiOjAsIkZha2VsaW1pdGwiOjYwLCJmX3dheTMiOjAsIkJvZHlZYXdWYWx1ZSI6MCwiWWF3QmFzZSI6IkF0IHRhcmdldHMiLCJZYXciOiIxODAiLCJCb2R5WWF3IjoiSml0dGVyIiwiUGl0Y2giOiJEZWZhdWx0IiwiZW1wdHlsYWJlbDMiOiIgIiwiRmFrZWxpbWl0ciI6NjAsIllhd1JpZ2h0IjoxMH0sIkp1bXBpbmctRHVjayI6eyJmX3dheTQiOjAsImZfd2F5MSI6MCwiSml0dGVyT2Zmc2V0Ijo1MCwiSml0dGVyIjoiQ2VudGVyIiwiZl93YXk1IjowLCJZYXdMZWZ0IjotMTIsImZfd2F5MiI6MCwiRmFrZWxpbWl0bCI6NjAsImZfd2F5MyI6MCwiQm9keVlhd1ZhbHVlIjowLCJZYXdCYXNlIjoiQXQgdGFyZ2V0cyIsIllhdyI6IjE4MCIsIkJvZHlZYXciOiJKaXR0ZXIiLCJQaXRjaCI6IkRlZmF1bHQiLCJlbXB0eWxhYmVsMyI6IiAiLCJGYWtlbGltaXRyIjo2MCwiWWF3UmlnaHQiOjI1fSwiTW92aW5nIjp7ImZfd2F5NCI6LTE2LCJmX3dheTEiOjMwLCJKaXR0ZXJPZmZzZXQiOjUyLCJKaXR0ZXIiOiJDZW50ZXIiLCJmX3dheTUiOi0zMiwiWWF3TGVmdCI6LTEyLCJmX3dheTIiOjE4LCJGYWtlbGltaXRsIjo2MCwiZl93YXkzIjowLCJCb2R5WWF3VmFsdWUiOjAsIllhd0Jhc2UiOiJBdCB0YXJnZXRzIiwiWWF3IjoiMTgwIiwiQm9keVlhdyI6IkppdHRlciIsIlBpdGNoIjoiRGVmYXVsdCIsImVtcHR5bGFiZWwzIjoiICIsIkZha2VsaW1pdHIiOjYwLCJZYXdSaWdodCI6MTZ9LCJTbG93d2FsayI6eyJmX3dheTQiOjAsImZfd2F5MSI6MCwiSml0dGVyT2Zmc2V0Ijo2MSwiSml0dGVyIjoiQ2VudGVyIiwiZl93YXk1IjowLCJZYXdMZWZ0IjotNywiZl93YXkyIjowLCJGYWtlbGltaXRsIjo2MCwiZl93YXkzIjowLCJCb2R5WWF3VmFsdWUiOjAsIllhd0Jhc2UiOiJBdCB0YXJnZXRzIiwiWWF3IjoiMTgwIiwiQm9keVlhdyI6IkppdHRlciIsIlBpdGNoIjoiRGVmYXVsdCIsImVtcHR5bGFiZWwzIjoiICIsIkZha2VsaW1pdHIiOjYwLCJZYXdSaWdodCI6N30sIkp1bXBpbmciOnsiZl93YXk0IjowLCJmX3dheTEiOjAsIkppdHRlck9mZnNldCI6NTUsIkppdHRlciI6IkNlbnRlciIsImZfd2F5NSI6MCwiWWF3TGVmdCI6LTE0LCJmX3dheTIiOjAsIkZha2VsaW1pdGwiOjYwLCJmX3dheTMiOjAsIkJvZHlZYXdWYWx1ZSI6MCwiWWF3QmFzZSI6IkF0IHRhcmdldHMiLCJZYXciOiIxODAiLCJCb2R5WWF3IjoiSml0dGVyIiwiUGl0Y2giOiJEZWZhdWx0IiwiZW1wdHlsYWJlbDMiOiIgIiwiRmFrZWxpbWl0ciI6NjAsIllhd1JpZ2h0IjoxNH19'
+      defaultkfg = 'Actimel_eyJTdGFuZGluZyI6eyJmX3dheTQiOjAsImZfd2F5MSI6MCwiSml0dGVyT2Zmc2V0Ijo1NCwiSml0dGVyIjoiQ2VudGVyIiwiZl93YXk1IjowLCJZYXdMZWZ0IjotMTAsImZfd2F5MiI6MCwiRmFrZWxpbWl0bCI6NjAsImZfd2F5MyI6MCwiQm9keVlhd1ZhbHVlIjotMzksIllhd0Jhc2UiOiJBdCB0YXJnZXRzIiwiWWF3IjoiMTgwIiwiQm9keVlhdyI6IkppdHRlciIsIlBpdGNoIjoiRGVmYXVsdCIsImVtcHR5bGFiZWwzIjoiICIsIkZha2VsaW1pdHIiOjYwLCJZYXdSaWdodCI6MTB9LCJDcm91Y2hpbmciOnsiZl93YXk0IjowLCJmX3dheTEiOjAsIkppdHRlck9mZnNldCI6NTQsIkppdHRlciI6IkNlbnRlciIsImZfd2F5NSI6MCwiWWF3TGVmdCI6LTEyLCJmX3dheTIiOjAsIkZha2VsaW1pdGwiOjYwLCJmX3dheTMiOjAsIkJvZHlZYXdWYWx1ZSI6MCwiWWF3QmFzZSI6IkF0IHRhcmdldHMiLCJZYXciOiIxODAiLCJCb2R5WWF3IjoiSml0dGVyIiwiUGl0Y2giOiJEZWZhdWx0IiwiZW1wdHlsYWJlbDMiOiIgIiwiRmFrZWxpbWl0ciI6NjAsIllhd1JpZ2h0IjoxMH0sIkp1bXBpbmctRHVjayI6eyJmX3dheTQiOjAsImZfd2F5MSI6MCwiSml0dGVyT2Zmc2V0Ijo1MCwiSml0dGVyIjoiQ2VudGVyIiwiZl93YXk1IjowLCJZYXdMZWZ0IjotMTIsImZfd2F5MiI6MCwiRmFrZWxpbWl0bCI6NjAsImZfd2F5MyI6MCwiQm9keVlhd1ZhbHVlIjowLCJZYXdCYXNlIjoiQXQgdGFyZ2V0cyIsIllhdyI6IjE4MCIsIkJvZHlZYXciOiJKaXR0ZXIiLCJQaXRjaCI6IkRlZmF1bHQiLCJlbXB0eWxhYmVsMyI6IiAiLCJGYWtlbGltaXRyIjo2MCwiWWF3UmlnaHQiOjI1fSwiTW92aW5nIjp7ImZfd2F5NCI6LTE2LCJmX3dheTEiOjMwLCJKaXR0ZXJPZmZzZXQiOjUyLCJKaXR0ZXIiOiJDZW50ZXIiLCJmX3dheTUiOi0zMiwiWWF3TGVmdCI6LTEyLCJmX3dheTIiOjE4LCJGYWtlbGltaXRsIjo2MCwiZl93YXkzIjowLCJCb2R5WWF3VmFsdWUiOjAsIllhd0Jhc2UiOiJBdCB0YXJnZXRzIiwiWWF3IjoiMTgwIiwiQm9keVlhdyI6IkppdHRlciIsIlBpdGNoIjoiRGVmYXVsdCIsImVtcHR5bGFiZWwzIjoiICIsIkZha2VsaW1pdHIiOjYwLCJZYXdSaWdodCI6MTZ9LCJTbG93d2FsayI6eyJmX3dheTQiOjAsImZfd2F5MSI6MCwiSml0dGVyT2Zmc2V0Ijo2MSwiSml0dGVyIjoiQ2VudGVyIiwiZl93YXk1IjowLCJZYXdMZWZ0IjotNywiZl93YXkyIjowLCJGYWtlbGltaXRsIjo2MCwiZl93YXkzIjowLCJCb2R5WWF3VmFsdWUiOjAsIllhd0Jhc2UiOiJBdCB0YXJnZXRzIiwiWWF3IjoiMTgwIiwiQm9keVlhdyI6IkppdHRlciIsIlBpdGNoIjoiRGVmYXVsdCIsImVtcHR5bGFiZWwzIjoiICIsIkZha2VsaW1pdHIiOjYwLCJZYXdSaWdodCI6N30sIkp1bXBpbmciOnsiZl93YXk0IjowLCJmX3dheTEiOjAsIkppdHRlck9mZnNldCI6NTUsIkppdHRlciI6IkNlbnRlciIsImZfd2F5NSI6MCwiWWF3TGVmdCI6LTE0LCJmX3dheTIiOjAsIkZha2VsaW1pdGwiOjYwLCJmX3dheTMiOjAsIkJvZHlZYXdWYWx1ZSI6MCwiWWF3QmFzZSI6IkF0IHRhcmdldHMiLCJZYXciOiIxODAiLCJCb2R5WWF3IjoiSml0dGVyIiwiUGl0Y2giOiJEZWZhdWx0IiwiZW1wdHlsYWJlbDMiOiIgIiwiRmFrZWxpbWl0ciI6NjAsIllhd1JpZ2h0IjoxNH19'
 	local settings = json.parse(base64.decode(string.sub(defaultkfg,8,-1), 'base64'))
 
 	for key, value in pairs(var.player_states) do
@@ -628,16 +633,16 @@ indicator_fade_dt = 0
 indicator_fade_hs = 0
 indicator_fade_fs = 0
 indicator_fade_fd = 0
-Kristiansand = 0
+Tønsberg = 0
 state = 0
 delta2 = 0
-KristiansandbindsDT = 0
+TønsbergbindsDT = 0
 local function c_indicators()
         if not entity.is_alive(entity.get_local_player()) then return end
         local X,Y = client.screen_size()
         local color_out = {ui.get(menu.indicatorscolor)} 
         mainlerp = -10
-        Acatel = 0
+        Og = 0
         indicator_spacing = 0
         local scoped = entity.get_prop(entity.get_local_player(), "m_bIsScoped") == 1
 
@@ -658,15 +663,15 @@ local function c_indicators()
 
     if ui.get(menu.indicators) == "Modern" then
         if scoped then
-            Kristiansand = lerp(Kristiansand,33,globals.frametime() * 15)
-            KristiansandbindsDT = lerp(KristiansandbindsDT,7,globals.frametime() * 15)
+            Tønsberg = lerp(Tønsberg,33,globals.frametime() * 15)
+            TønsbergbindsDT = lerp(TønsbergbindsDT,7,globals.frametime() * 15)
         else 
-            Kristiansand = lerp(Kristiansand,0,globals.frametime() * 15)
-            KristiansandbindsDT = lerp(KristiansandbindsDT,-2,globals.frametime() * 15)
+            Tønsberg = lerp(Tønsberg,0,globals.frametime() * 15)
+            TønsbergbindsDT = lerp(TønsbergbindsDT,-2,globals.frametime() * 15)
         end
         old_indicator_spacing = lerp(old_indicator_spacing,indicator_spacing, globals.frametime() * 15)
-            renderer.text(X / 2 + Kristiansand, Y / 2 + 20 + old_indicator_spacing , 50, 50, 50, 255, "cb", nil, "Kristiansand")
-            renderer.text(X / 2 + Kristiansand, Y / 2 + 20 + old_indicator_spacing , 255, 255, 255, 255, "cb", nil, string.format("\a%sa\a%sc\a%st\a%si\a%sm\a%se\a%sl\a%s.\a%sd\a%se\a%sv", RGBAtoHEX(unpack(aA[1])), RGBAtoHEX(unpack(aA[2])), RGBAtoHEX(unpack(aA[3])), RGBAtoHEX(unpack(aA[4])), RGBAtoHEX(unpack(aA[5])), RGBAtoHEX(unpack(aA[6])), RGBAtoHEX(unpack(aA[7])), RGBAtoHEX(unpack(aA[8])), RGBAtoHEX(unpack(aA[9])),RGBAtoHEX(unpack(aA[10])),RGBAtoHEX(unpack(aA[11])),RGBAtoHEX(unpack(aA[12])),RGBAtoHEX(unpack(aA[13]))))
+            renderer.text(X / 2 + Tønsberg, Y / 2 + 20 + old_indicator_spacing , 50, 50, 50, 255, "cb", nil, "Tønsberg.no")
+            renderer.text(X / 2 + Tønsberg, Y / 2 + 20 + old_indicator_spacing , 255, 255, 255, 255, "cb", nil, string.format("\a%sa\a%sc\a%st\a%si\a%sm\a%se\a%sl\a%s.\a%sd\a%se\a%sv", RGBAtoHEX(unpack(aA[1])), RGBAtoHEX(unpack(aA[2])), RGBAtoHEX(unpack(aA[3])), RGBAtoHEX(unpack(aA[4])), RGBAtoHEX(unpack(aA[5])), RGBAtoHEX(unpack(aA[6])), RGBAtoHEX(unpack(aA[7])), RGBAtoHEX(unpack(aA[8])), RGBAtoHEX(unpack(aA[9])),RGBAtoHEX(unpack(aA[10])),RGBAtoHEX(unpack(aA[11])),RGBAtoHEX(unpack(aA[12])),RGBAtoHEX(unpack(aA[13]))))
             -- MAIN KITAXE
     
     
@@ -674,7 +679,7 @@ local function c_indicators()
             if ui.get(refs.dt[1]) and ui.get(refs.dt[2]) then
                 indicator_fade_dt = lerp(indicator_fade_dt,mainlerp,globals.frametime() * 15)
         
-                renderer.text(X / 2 + KristiansandbindsDT, Y / 2 + 42 + indicator_spacing + indicator_fade_dt, 255,255,255,210,"-c",0,"DT")
+                renderer.text(X / 2 + TønsbergbindsDT, Y / 2 + 42 + indicator_spacing + indicator_fade_dt, 255,255,255,210,"-c",0,"DT")
                 indicator_spacing = indicator_spacing + 1
                 mainlerp = mainlerp + 9
     
@@ -686,7 +691,7 @@ local function c_indicators()
             if ui.get(refs.os[1]) and ui.get(refs.os[2]) then
                 indicator_fade_hs = lerp(indicator_fade_hs,mainlerp,globals.frametime() * 15)
     
-                renderer.text(X / 2 + KristiansandbindsDT, Y / 2 + 42 + indicator_spacing + indicator_fade_hs, 255,255,255,210,"-c",0,"OS")
+                renderer.text(X / 2 + TønsbergbindsDT, Y / 2 + 42 + indicator_spacing + indicator_fade_hs, 255,255,255,210,"-c",0,"OS")
 
                 indicator_spacing = indicator_spacing + 1
                 mainlerp = mainlerp + 9
@@ -700,7 +705,7 @@ local function c_indicators()
             if ui.get(menu.freestandinghotkey) then
                 indicator_fade_fs = lerp(indicator_fade_fs,mainlerp,globals.frametime() * 15)
     
-                renderer.text(X / 2 + KristiansandbindsDT, Y / 2 + 42 + indicator_spacing + indicator_fade_fs, 255,255,255,210,"-c",0,"FS")
+                renderer.text(X / 2 + TønsbergbindsDT, Y / 2 + 42 + indicator_spacing + indicator_fade_fs, 255,255,255,210,"-c",0,"FS")
 
                 indicator_spacing = indicator_spacing + 1
                 mainlerp = mainlerp + 9
@@ -714,7 +719,7 @@ local function c_indicators()
             if ui.get(refs.fd) then
                 indicator_fade_fd = lerp(indicator_fade_fd,mainlerp,globals.frametime() * 15)
     
-                renderer.text(X / 2 + KristiansandbindsDT, Y / 2 + 42 + indicator_spacing + indicator_fade_fd, 255,255,255,210,"-c",0,"FD")
+                renderer.text(X / 2 + TønsbergbindsDT, Y / 2 + 42 + indicator_spacing + indicator_fade_fd, 255,255,255,210,"-c",0,"FD")
                 indicator_spacing = indicator_spacing + 1
                 mainlerp = mainlerp + 9
     
@@ -724,10 +729,10 @@ local function c_indicators()
         end
     end
 
-    if ui.get(menu.indicators) == "Acatel" then
+    if ui.get(menu.indicators) == "Og" then
         local player_inverter = entity.get_prop(entity.get_local_player(), "m_flPoseParameter", 11) * 120 - 60 <= 0 and true or false
         local alphaold = math.min(math.floor(math.sin((globals.curtime()%3) * 5) * 175 + 200), 255)
-        renderer.text(X/2 + 16, Y/2 + 30, 255,255,255,255,"-c",0,"Kristiansand")
+        renderer.text(X/2 + 16, Y/2 + 30, 255,255,255,255,"-c",0,"Tønsberg")
         renderer.text(X/2 + 42, Y/2 + 30, color_out[1], color_out[2], color_out[3],alphaold,"-c",0,"Nightly")
         renderer.text(X/2 + 19, Y/2 + 38, 217,214,238,255,"-c",0,"FAKE YAW:")
         if player_inverter == true then
@@ -737,30 +742,30 @@ local function c_indicators()
         end
         if ui.get(refs.dt[1]) and ui.get(refs.dt[2]) then
             if doubletap_charged() and not ui.get(refs.qp[2]) then
-                renderer.text(X/2 + 5, Y/2 + 46 + Acatel, 192,226,199,255,"-c",0,"DT")
-                Acatel = Acatel + 8
+                renderer.text(X/2 + 5, Y/2 + 46 + Og, 192,226,199,255,"-c",0,"DT")
+                Og = Og + 8
             elseif not doubletap_charged() then
-                renderer.text(X/2 + 5, Y/2 + 46 + Acatel, 255,50,0,180,"-c",0,"DT")
-                Acatel = Acatel + 8
+                renderer.text(X/2 + 5, Y/2 + 46 + Og, 255,50,0,180,"-c",0,"DT")
+                Og = Og + 8
             elseif doubletap_charged() and ui.get(refs.qp[2]) then
-                renderer.text(X/2 + 19, Y/2 + 46 + Acatel, 192,226,199,255,"-c",0,"IDEAL TICK")
-                Acatel = Acatel + 8
+                renderer.text(X/2 + 19, Y/2 + 46 + Og, 192,226,199,255,"-c",0,"IDEAL TICK")
+                Og = Og + 8
             end
         end
         if ui.get(refs.baim) then
-            renderer.text(X/2 + 10, Y/2 + 46 + Acatel, 255,255,255,255,"-c",0,"BAIM")
+            renderer.text(X/2 + 10, Y/2 + 46 + Og, 255,255,255,255,"-c",0,"BAIM")
         else
-            renderer.text(X/2 + 10, Y/2 + 46 + Acatel, 255,255,255,150,"-c",0,"BAIM")
+            renderer.text(X/2 + 10, Y/2 + 46 + Og, 255,255,255,150,"-c",0,"BAIM")
         end
         if ui.get(refs.baim) then
-            renderer.text(X/2 + 26, Y/2 + 46 + Acatel, 255,255,255,255,"-c",0,"SP")
+            renderer.text(X/2 + 26, Y/2 + 46 + Og, 255,255,255,255,"-c",0,"SP")
         else
-            renderer.text(X/2 + 26, Y/2 + 46 + Acatel, 255,255,255,150,"-c",0,"SP")
+            renderer.text(X/2 + 26, Y/2 + 46 + Og, 255,255,255,150,"-c",0,"SP")
         end
         if ui.get(menu.freestandinghotkey) then
-            renderer.text(X/2 + 37, Y/2 + 46 + Acatel, 255,255,255,255,"-c",0,"FS")
+            renderer.text(X/2 + 37, Y/2 + 46 + Og, 255,255,255,255,"-c",0,"FS")
         else
-            renderer.text(X/2 + 37, Y/2 + 46 + Acatel, 255,255,255,150,"-c",0,"FS")
+            renderer.text(X/2 + 37, Y/2 + 46 + Og, 255,255,255,150,"-c",0,"FS")
         end
     end
 
@@ -770,17 +775,17 @@ local function watermark()
     local color_out = {ui.get(menu.watermarkcolor)} 
     local X,Y = client.screen_size()
     if  ui.get(menu.watermark) == "Down center" then
-        renderer.text(X / 2,Y / 1.01,color_out[1],color_out[2],color_out[3],color_out[4],"bc",0,"A C T I M E L . D E V")
+        renderer.text(X / 2,Y / 1.01,color_out[1],color_out[2],color_out[3],color_out[4],"bc",0,"6 6 6  .N O ")
     end
     if  ui.get(menu.watermark) == "Modern" then
         local alphaold = math.min(math.floor(math.sin((globals.curtime()%3) * 5) * 125 + 200), 255)
-        renderer.text(X / 16,Y / 1.96,255,255,255,255,"c",0,"/> Kristiansand multi-script preium [         ] </")
+        renderer.text(X / 16,Y / 1.96,255,255,255,255,"c",0,"/> Tønsberg.no multi-script preium [         ] </")
         renderer.text(X / 9.66,Y / 1.96,color_out[1],color_out[2],color_out[3],alphaold,"c",0,"Nightly")
     end
 end
 
-local kill_say_text = {'1v1? 2v2?','fix ur cfg niger','0.001839490  𝔟𝔱𝔠 𝔯𝔦𝔠𝔥𝖍','Kristiansand $ prediction','You are the best at being dead','fix ur stats random','Я использую gamesense',
-'I hate pasted luas thats why I use Kristiansand.lua', 'go kys furry dog','不使用 skeet Nightly，我使用的是 Kristiansand.lua'}
+local kill_say_text = {'1v1? 2v2?','fix ur cfg niger','0.001839490  𝔟𝔱𝔠 𝔯𝔦𝔠𝔥𝖍','Tønsberg $ prediction','You are the best at being dead','fix ur stats random','Я использую gamesense',
+'I hate pasted luas thats why I use Tønsberg.lua', 'go kys furry dog','不使用 skeet Nightly，我使用的是 Tønsberg.lua'}
 
 local kill_say_text2 = {"я щас так посрал что просто пиздец, я нахуй такую гороховую банку высрал у меня чуть ушные перепонки не взорвались нахуй","ты раб кадырова","7 радужных чеченцев идут в Москву","ыыыыыыыыыы ыыыыыы","ъ","а ты сувал себе банан в жопу?","бляа пизда седня слышу што-то жужит смотрю а у меня из штанов хуй как пчела улетает","тест влад луа","кто здесь","паймааааал пиупиу!!!! пиупиу ахххахаххаахахахахаааа!!!! пиупиу ихххихиххиии!!!!! ахахахаха!!!!","КАКААААШКИИИ!!!!! КАКАААААШКИИИИИ!!!!!!!!!!","с наступающим Новым Годом!",}
 
@@ -955,8 +960,8 @@ local function on_load()
     ui.set_visible(menu.watermarkcolor, ui.get(menu.enable) == "Enable" and ui.get(menu.tab) == "Visuals" and (ui.get(menu.watermark) == "Down center" or ui.get(menu.watermark) == "Modern"))
     ui.set_visible(menu.watermarkcolorlabel, ui.get(menu.enable) == "Enable" and ui.get(menu.tab) == "Visuals" and (ui.get(menu.watermark) == "Down center" or ui.get(menu.watermark) == "Modern"))
     ui.set_visible(menu.indicators, ui.get(menu.enable) == "Enable" and ui.get(menu.tab) == "Visuals")
-    ui.set_visible(menu.indicatorscolor, ui.get(menu.enable) == "Enable" and ui.get(menu.tab) == "Visuals" and (ui.get(menu.indicators) == "Modern" or ui.get(menu.indicators) == "Acatel"))
-    ui.set_visible(menu.indicatorscolorlabel, ui.get(menu.enable) == "Enable" and ui.get(menu.tab) == "Visuals" and (ui.get(menu.indicators) == "Modern" or ui.get(menu.indicators) == "Acatel"))
+    ui.set_visible(menu.indicatorscolor, ui.get(menu.enable) == "Enable" and ui.get(menu.tab) == "Visuals" and (ui.get(menu.indicators) == "Modern" or ui.get(menu.indicators) == "Og"))
+    ui.set_visible(menu.indicatorscolorlabel, ui.get(menu.enable) == "Enable" and ui.get(menu.tab) == "Visuals" and (ui.get(menu.indicators) == "Modern" or ui.get(menu.indicators) == "Og"))
     ui.set_visible(menu.aimbotlogs, ui.get(menu.enable) == "Enable" and ui.get(menu.tab) == "Visuals")
     ui.set_visible(menu.aimbotlogscolor, ui.get(menu.enable) == "Enable" and ui.get(menu.tab) == "Visuals" and table_contains(ui.get(menu.aimbotlogs),"Under crosshair"))
     ui.set_visible(menu.aimbotlogscolor2, ui.get(menu.enable) == "Enable" and ui.get(menu.tab) == "Visuals" and table_contains(ui.get(menu.aimbotlogs),"Under crosshair"))
@@ -973,9 +978,9 @@ local function on_load()
     ui.set_visible(menu.sp_baimmishp, ui.get(menu.enable) == "Enable" and ui.get(menu.tab) == "Ragebot" and table_contains(ui.get(menu.sp_baim),"HP lower than X"))
     ui.set_visible(menu.dmgindicator, ui.get(menu.enable) == "Enable" and ui.get(menu.tab) == "Visuals")
     ui.set_visible(menu.binds_label, ui.get(menu.enable) == "Enable" and ui.get(menu.tab) == "Misc")
-    ui.set_visible(menu.color_label, ui.get(menu.enable) == "Enable" and ui.get(menu.tab) == "Visuals" and (table_contains(ui.get(menu.aimbotlogs),"Under crosshair") or (ui.get(menu.indicators) == "Modern" or ui.get(menu.indicators) == "Acatel")))
+    ui.set_visible(menu.color_label, ui.get(menu.enable) == "Enable" and ui.get(menu.tab) == "Visuals" and (table_contains(ui.get(menu.aimbotlogs),"Under crosshair") or (ui.get(menu.indicators) == "Modern" or ui.get(menu.indicators) == "Og")))
 
-    --# Kristiansand antiaim
+    --# Tønsberg antiaim
     active_i = var.player_states_idx[ui.get(Antiaim[0].Condition)]
     for i = 1,6 do 
         ui.set_visible(Antiaim[i].Pitch, active_i == i and ui.get(menu.enable) == "Enable" and ui.get(menu.tab) == "Anti-Aim")
